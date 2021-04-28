@@ -10,20 +10,31 @@ grails.project.dependency.resolution = {
     log "warn"
 
     repositories {
-        grailsHome()
-        grailsCentral()
-        mavenCentral()
+
+        mavenRepo "https://repo.grails.org/grails/core"
+
+        mavenRepo "https://repo.grails.org/grails/plugins"
+        //grailsHome()
+        //grailsCentral()
+
+        mavenRepo "https://repo1.maven.org/maven2"
+        //mavenCentral()
     }
 
     dependencies {
+
+        compile "commons-io:commons-io:2.8.0"
+
         compile("org.quartz-scheduler:quartz:2.2.1") {
             excludes 'slf4j-api', 'c3p0'
         }
+        compile "org.grails:grails-docs:4.0.7"
     }
 
     plugins {
         build ':release:3.0.1', ':rest-client-builder:2.0.1', {
             export = false
         }
+        
     }
 }
